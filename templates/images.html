@@ -87,32 +87,32 @@
 <form>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">Add your product</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Shop</li>
+            <li class="breadcrumb-item"><a href="/">Add your memory</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Memories</li>
         </ol>
     </nav>
-{% if images %}
-    {% for i in images %}
+    {% if images %}
+        {% for i in images %}
+            <form>
+                <li class="list-unstyled">
+
+                    <h3 class="font-weight-bold">Title: {{ i.title }}</h3>
+                    <div class="box">
+                        <img src="{{ i.certificate.url }}" alt="{{ i.title }}" class="rounded">
+                    </div>
+                    <br>
+                    <h6 style="position: relative">Description: {{ i.comment }}</h6>
+                    <h5 style="">Date: {{ i.date }} </h5>
+
+                </li>
+            </form>
+
+        {% endfor %}
+    {% else %}
         <form>
-            <li class="list-unstyled">
-
-                <h3 class="font-weight-bold">Title: {{ i.title }}</h3>
-                <div class="box">
-                    <img src="{{ i.certificate.url }}" alt="{{ i.title }}" class="rounded">
-                </div>
-                <br>
-                <h6 style="position: relative">Description: {{ i.comment }}</h6>
-                <h5 style="">Data: {{ i.date }} $</h5>
-
-            </li>
+            <h3>No memories</h3>
         </form>
-
-    {% endfor %}
-{% else %}
-    <form>
-        <h3>No images</h3>
-    </form>
-{% endif %}
+    {% endif %}
 </form>
 
 </body>

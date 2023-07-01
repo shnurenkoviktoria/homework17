@@ -66,8 +66,8 @@
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item active" aria-current="page">Add your product</li>
-            <li class="breadcrumb-item"><a href="/images">Shop</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Add your memory</li>
+            <li class="breadcrumb-item"><a href="/images">Memories</a></li>
         </ol>
     </nav>
 
@@ -78,7 +78,10 @@
     <br>
     <h5>Image: {{ form.certificate }}</h5>
     <br>
-    <h5>Date: {{ form.date }}$</h5>
+    <h5>Date: {{ form.date }} </h5>
+    {% if errors %}
+        <h5>Error: {{ errors }}</h5>
+    {% endif %}
     <br>
     <input type="submit" value="Submit" class="btn btn-success btn-lg btn-block">
 

@@ -6,15 +6,18 @@ from polls.models import Memory
 
 
 def form_image(request):
-    if request.method == "POST":
-        form = MemoryForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect(reverse("show"))
-        return render(request, "images_form.html", {"form": form})
-    else:
+    form = MemoryForm(request.POST, request.FILES)
+
+    if request.method == "GET":
         form = MemoryForm()
         return render(request, "images_form.html", {"form": form})
+
+    if form.is_valid():
+        form.save()
+        return redirect(reverse(images_show))
+    elif form.is_valid() is False:
+        return render(request, "images_form.html", {"form": form, "errors": form.errors})
+    return render(request, "images_form.html", {"form": form})
 
 
 def images_show(request):
